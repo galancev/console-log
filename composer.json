@@ -1,0 +1,21 @@
+{
+  "name": "galancev/console-log",
+  "description": "Console log component",
+  "minimum-stability": "stable",
+  "license": "GPL-3.0-only",
+  "type": "library",
+  "authors": [
+    {
+      "name": "Evgeniy Galantsev",
+      "email": "galandets@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.4.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Galantcev\\Components\\": ""
+    }
+  }
+}
