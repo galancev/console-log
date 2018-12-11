@@ -220,7 +220,7 @@ class ConsoleLog
         $this->output .= $text;
 
         if ($this->callback)
-            $this->callback->__invoke();
+            $this->callback->__invoke($text);
     }
 
     /**
