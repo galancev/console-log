@@ -132,7 +132,7 @@ class ConsoleLog
             $this->output($outputStr);
         }
 
-        if ($this->outputToBuffer) {
+        if ($this->outputToBuffer || $this->callback) {
             $saveStr = $this->addTime($str, false);
             $this->addBuffer($saveStr);
         }
@@ -157,7 +157,7 @@ class ConsoleLog
             $this->output($outputStr);
         }
 
-        if ($this->outputToBuffer) {
+        if ($this->outputToBuffer || $this->callback) {
             $saveStr = $this->addLabel($str, 'ERROR', 101, 37, false);
             $saveStr = $this->addTime($saveStr, false);
             $this->addBuffer($saveStr);
@@ -180,7 +180,7 @@ class ConsoleLog
             $this->output($outputStr);
         }
 
-        if ($this->outputToBuffer) {
+        if ($this->outputToBuffer || $this->callback) {
             $saveStr = $this->addLabel($str, 'WARNING', 103, 30, false);
             $saveStr = $this->addTime($saveStr, false);
             $this->addBuffer($saveStr);
@@ -203,7 +203,7 @@ class ConsoleLog
             $this->output($outputStr);
         }
 
-        if ($this->outputToBuffer) {
+        if ($this->outputToBuffer || $this->callback) {
             $saveStr = $this->addLabel($str, 'SUCCESS', 102, 30, false);
             $saveStr = $this->addTime($saveStr, false);
             $this->addBuffer($saveStr);
@@ -217,7 +217,8 @@ class ConsoleLog
      */
     private function addBuffer($text)
     {
-        $this->output .= $text;
+        if ($this->outputToBuffer)
+            $this->output .= $text;
 
         if ($this->callback)
             $this->callback->__invoke($text);
