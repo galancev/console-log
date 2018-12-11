@@ -58,6 +58,12 @@ class ConsoleLog
     protected $outputToBuffer = false;
 
     /**
+     * Коллбек для отработки вывода в файл
+     * @var \Closure
+     */
+    protected $callback;
+
+    /**
      * Устанавливает вывод временных меток перед выводом
      * @param bool $using
      */
@@ -206,11 +212,15 @@ class ConsoleLog
 
     /**
      * Добавляем в консольный вывод нечто новое
+     * И вызываем коллбек для записи в лог, если он был настроен
      * @param $text
      */
     private function addBuffer($text)
     {
         $this->output .= $text;
+
+        if ($this->callback)
+            $this->callback->__invoke();
     }
 
     /**
@@ -352,5 +362,14 @@ class ConsoleLog
         }
 
         $this->output($str);
+    }
+
+    /**
+     * Устанавливает коллбек для добавления записи в лог
+     * @param \Closure $callback
+     */
+    public function setLogCallback($callback)
+    {
+        $this->callback = $callback;
     }
 }
