@@ -2,6 +2,8 @@
 
 namespace Galantcev\Components;
 
+use Closure;
+
 /**
  * Логирование в буфер и одновременный вывод в консоль
  * Class ConsoleLog
@@ -59,7 +61,7 @@ class ConsoleLog
 
     /**
      * Коллбек для отработки вывода в файл
-     * @var \Closure
+     * @var Closure
      */
     protected $callback;
 
@@ -367,9 +369,9 @@ class ConsoleLog
 
     /**
      * Устанавливает коллбек для добавления записи в лог
-     * @param \Closure $callback
+     * @param Closure $callback
      */
-    public function setLogCallback($callback)
+    public function setLogCallback(Closure $callback)
     {
         $this->callback = $callback;
     }
