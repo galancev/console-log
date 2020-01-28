@@ -1,13 +1,13 @@
 <?php
 
-namespace Galantcev\Components;
+namespace EG\Components;
 
 use Closure;
 
 /**
  * Логирование в буфер и одновременный вывод в консоль
  * Class ConsoleLog
- * @package Galantcev\Components
+ * @package EG\Components
  */
 class ConsoleLog
 {
